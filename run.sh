@@ -31,10 +31,15 @@ if [ "${DB_TYPE}" == "mysql" ]; then
 
 fi
 
+git clone https://github.com/raghudevopsb81/roboshop-shipping.git
+git clone https://github.com/raghudevopsb81/roboshop-catalogue.git
+
 if [ "${DB_TYPE}" == "mongo" ]; then
-  git clone ${APP_GIT_URL} .
+  #git clone ${APP_GIT_URL} .
+  cd roboshop-catalogue
   mongosh --host ${DB_HOST} <${SCHEMA_FILE}
 elif [ "${DB_TYPE}" == "mysql" ]; then
-  git clone ${APP_GIT_URL} .
+#  git clone ${APP_GIT_URL} .
+  cd roboshop-shipping
   mysql -h $DB_HOST -u$DB_USER -p$DB_PASS <${SCHEMA_FILE}
 fi
